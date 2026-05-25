@@ -1,0 +1,169 @@
+/* ── GLOBAL RESET & BASE ── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --clr-bg: #f0f4f8;
+  --clr-surface: #ffffff;
+  --clr-primary: #4f46e5;
+  --clr-primary-light: #eef2ff;
+  --clr-text: #1a1a2e;
+  --clr-muted: #6b7280;
+  --clr-accent: #f59e0b;
+  --radius: 16px;
+  --font-display: 'Georgia', serif;
+  --font-body: system-ui, -apple-system, sans-serif;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--clr-bg);
+  color: var(--clr-text);
+  min-height: 100vh;
+}
+
+/* ── HEADER ── */
+.gallery-header {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 60%, #0f3460 100%);
+  color: white;
+  text-align: center;
+  padding: 64px 24px 56px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle decorative circles in the background */
+.gallery-header::before,
+.gallery-header::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.06;
+  background: white;
+}
+.gallery-header::before {
+  width: 500px; height: 500px;
+  top: -180px; left: -120px;
+}
+.gallery-header::after {
+  width: 380px; height: 380px;
+  bottom: -160px; right: -80px;
+}
+
+.header-content {
+  position: relative; /* sits above ::before/::after */
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.header-eyebrow {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--clr-accent);
+  margin-bottom: 12px;
+}
+
+.header-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3.2rem); /* ← clamp = responsive font size */
+  font-weight: 700;
+  line-height: 1.15;
+  margin-bottom: 16px;
+}
+
+.header-accent {
+  color: var(--clr-accent);
+  font-style: italic;
+}
+
+.header-subtitle {
+  font-size: 1rem;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.6;
+}
+
+/* ── MAIN CONTENT ── */
+.gallery-main {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 40px 24px 64px;
+}
+
+/* ── FILTER BAR ── */
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.filter-btn {
+  background: var(--clr-surface);
+  border: 2px solid transparent;
+  color: var(--clr-muted);
+  font-size: 0.875rem;
+  font-weight: 600;
+  padding: 8px 20px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+}
+
+.filter-btn:hover {
+  border-color: var(--clr-primary);
+  color: var(--clr-primary);
+}
+
+.filter-btn--active {
+  background: var(--clr-primary);
+  color: white;
+  border-color: var(--clr-primary);
+  box-shadow: 0 4px 14px rgba(79,70,229,0.35);
+}
+
+/* ── RESULTS COUNT ── */
+.results-count {
+  text-align: center;
+  font-size: 0.875rem;
+  color: var(--clr-muted);
+  margin-bottom: 32px;
+}
+
+/* ── GALLERY GRID ── */
+/* 📚 CSS Grid with auto-fill: automatically creates as many columns as fit */
+/* minmax(280px, 1fr) means: each column is at least 280px, at most 1 fraction */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+/* ── FOOTER ── */
+.gallery-footer {
+  text-align: center;
+  padding: 24px;
+  font-size: 0.8rem;
+  color: var(--clr-muted);
+  border-top: 1px solid #e5e7eb;
+}
+
+/* ── RESPONSIVE BREAKPOINTS ── */
+@media (max-width: 640px) {
+  .gallery-header {
+    padding: 48px 16px 40px;
+  }
+  .gallery-main {
+    padding: 28px 16px 48px;
+  }
+  /* On very small screens, force single column */
+  .gallery-grid {
+    grid-template-columns: 1fr;
+  }
+}
