@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 🖼️ Dynamic Image Gallery — React
 
 A responsive image gallery built with React JS as a learning project.
@@ -48,3 +49,6 @@ That's it — the gallery updates automatically!
 
 ## 🚢 Deployment
 Deployed automatically via GitHub Actions → GitHub Pages.
+=======
+# image-gallery
+>>>>>>> b34986b03fa72e5dc1fdeca2a76e5fe605c33a63
